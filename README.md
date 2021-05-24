@@ -9,14 +9,16 @@
   - [Feature Importance](#what-is-feature-importance)  
   - [Summary](#conclusion)  
  
-## What is Classification?  
+## What is Classification?
+
 In machine learning, classification refers to a predictive modeling problem where a class label is predicted for a given example of input data.Use the optimal clasification algorithm to predict the result.There are perhaps four main types of classification tasks that you may encounter; they are:  
 -Binary Classification  
 -Multi-Class Classification  
 -Multi-Label Classification  
 -Imbalanced Classification  
 
-**What is Binary Classification?**    
+**What is Binary Classification?**   
+
 `Binary classification` is the simplest kind of machine learning problem. 
 The goal of binary classification is to categorise data points into one of two buckets: 0 or 1, true or false, to survive or not to survive, blue or no blue eyes, etc.  
 Popular algorithms that can be used for binary classification include:  
@@ -35,10 +37,12 @@ Popular algorithms that can be used for multi-class classification include:
 -Gradient Boosting.  
 <hr>
 
-## What is [MindsDB](https://mindsdb.com/)?  
+## What is [MindsDB](https://mindsdb.com/)?
+
 MindsDB is an open-source AI layer for existing databases that allows you to effortlessly develop, train and deploy state-of-the-art machine learning models using SQL queries. With MindsDB any developer, analyst or data scientist can automatically build and deploy Machine Learning models from inside the databases in minutes using a graphical user interface or plain SQL.  
 
-### How to [setup](https://docs.mindsdb.com/) MindsDB?  
+### How to [setup](https://docs.mindsdb.com/) MindsDB?
+
 In this project we used mysqldb and mindsdb - python native  
 -For [MySQL DB](https://www.mysql.com/downloads/) installation  
 -For [Python Native](https://docs.mindsdb.com/JupyterNotebook/)      
@@ -48,6 +52,7 @@ In this project we used mysqldb and mindsdb - python native
   Python native is used in this module.  
 
 ### How to [import](https://docs.mindsdb.com/datasources/mysql/) your data?
+
 The database dump is provided in the repo, import it using your mysqli command line or the workbench.  
 The data source can be a file, data frame or a MindsDB data source.
 In this module we use [MySQL_DS](https://docs.mindsdb.com/features/DataSources/#mysqlds) & [MySQL DB](https://docs.mindsdb.com/datasources/mysql/)  
@@ -59,6 +64,7 @@ from mindsdb_native import Predictor, MySqlDS
 ```  
 
 ### How to [train](https://docs.mindsdb.com/model/mysql/) the model and predict data?
+
 Using MySQL:  
 To train a new model, you will need to INSERT a new record inside the mindsdb.predictors table.
 The INSERT query for training new model is quite simple, e.g.:
@@ -78,23 +84,29 @@ model.learn(from_data=train_data, to_predict=<targetColumn>)
 predictions = model.predict(when_data=test_data)
 ```  
 
-## Python Implementation     
+## Python Implementation
+
 We first have the Pre-Processing of the data, then we have the Machine Learning aspect of it where we train the model using the data and finally, we have the prediction where we give x data into the model to return a prediction after training the model with a pre-existing data set.     
+
 **Pre-Processing**  
 
 We can think of DataFrames as a 2D structure or like a 2D array of kinds that has a row and a column. We use a DataFrame here to load the .csv data to be used by the program. We can use this with the help of the pandas library.
+
 ```
 import pandas as pd
 df = pd.read_csv('sampleDataset.csv')
 ```
+
 There are a few things that we do with this DataFrame before we're ready to train our model. This is called pre-processing. During pre-processing, we help clean our dataset. This helps is providing a more accurate and clean model execution.  
 
 We use the shape function from pandas to return the number of rows and colums in the DataFrame.
+
 ```
 df.shape
 ```
 
 The dropna function can be used to trim the empty data. Dropna is used to drop rows where at least one row is missing.
+
 ```
 df.dropna()
 ```
@@ -102,9 +114,11 @@ df.dropna()
 After this, we can compare the value from the original DataFrame that we got using shape function with the value from the shape function after using Dropna. We can find that there's almost some reduction in the number of rows in the DataFrame now. 
 
 Now we check the dataset. If there are Yes and No values in the columns, we replace them with 1's and 0's since models understand only numbers. To do so, we use the replace function.
+
 ```
 df['col_name'].replace({'No': 0, 'Yes': 1}, inplace =  True)
 ```
+
 **Training**
 
 Now that we're done with pre-processing the data, we can now train our model. Before that we need to split our data into training data and testing data. To do so we use the train_test_split() function from sklearn model selection. 
@@ -130,6 +144,7 @@ After this we can build our model with any of the ML algorithms we choose.
 The fit method typically start with clearing any attributes already stored on the estimator and then perform parameter and data validation. They also are responsible for estimating the attr. out of the input data and store the model attr. and finally return the fitted estimator. 
 
 Algorithms that can be used for Multi-class classification problems:  
+
 **1. K-Nearest Neighbors:**    
 The k-nearest neighbors (KNN) algorithm is a simple, easy-to-implement supervised machine learning algorithm that can be used to solve both classification and regression problems. 
 It’s easy to implement and understand, but has a major drawback of becoming significantly slows as the size of that data in use grows. 
@@ -167,6 +182,7 @@ Out of these models, Logistic Regression gives the highest accuracy.
 Now to **evaluate** how accurate our model is, we can use different metrics but here we'll use accuracy score.   
 
 **Confusion Matrix**      
+
 A `Confusion matrix` is an N x N matrix used for evaluating the performance of a classification model, where N is the number of target classes. The matrix compares the actual target values with those predicted by the machine learning model. This gives us a holistic view of how well our classification model is performing and what kinds of errors it is making.  
 * True Positive (TP)  
 The predicted value matches the actual value  
@@ -184,42 +200,51 @@ The actual value was positive but the model predicted a negative value
 Also known as the Type 2 error  
 
 ![AccuracyScore](/assets/accuracy.png)  
+
 <u>**Accuracy**</u> Score produces a result according to the sum of the number of times our model predicted no correctly(True Negative) and yes correctly(True Positive) by the total number of predictions.
+
 ```
 from sklearn.metrics import accuracy_score
 score = accuracy_score(y_test, y_pred)
 ```
+
 The higher the accuracy score is, the better and more accurate our model is and so are our predictions. 
 
-![PrecisionScore](/assets/precision.png)      
+![PrecisionScore](/assets/precision.png)
+
 <u>**Precision Score**</u> is the ratio of correctly predicted positive observations to the total predicted positive observations. High precision rates to the low false positive rate.  
 
 ```
 from sklearn.metrics import precision_score
 precision_score(y_test, y_pred, average='None')
 ```
+
 The precision is intuitively the ability of the classifier not to label as positive a sample that is negative.
 
-![RecallScore](/assets/recall.png)      
+![RecallScore](/assets/recall.png)
+
 <u>**Recall Score**</u> is the ratio of correctly predicted positive observarions to the all observations. It's a metric that quantifies the number of correct positive predictions made out of all positive predictions that could have been made. 
 
 ```
 from sklearn.metrics import recall_score
 recall_score(y_test, y_pred)
 ```
+
 It is intuitively the ability of the classifier to find all the positive samples.
 
 ![F1Score](/assets/f1.png)      
+
 <u>**F1 Score**</u> is the weighted average of precision and recall scores. Therefore, this score takes both false positives and false negatives into accout.
 
 ```
 from sklearn.metrics import f1_score
 f1_score(y_test, y_pred)
 ```
+
 Intuitively, it's not easy to understand as accuract, but F1 is usually more useful than accuracy, especially if there's an uneven class distribution.  
 
-
 ### Interpreting the results of Mindsdb and Logistic Regression  
+
 `Logistic regression` Python Implementation results  
 ```
 model.score(x_test,y_test)
@@ -239,6 +264,7 @@ support:   [ 8241      500        969        12517]
 
 for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
 ```
+
 <img src="assets/cm.png">  
 
 `Mindsdb results`
@@ -260,9 +286,11 @@ support:   [ 8167   550  1041 12469]
 
 for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
 ```
+
 <img src="assets/mindsdbCM.png">  
 
 ## What is Feature Importance?
+
 The feature engineering process involves selecting the minimum required features to produce a valid model because the more features a model contains, the more complex it is (and the more sparse the data), therefore the more sensitive the model is to errors due to variance. A common approach to eliminating features is to describe their relative importance to a model, then eliminate weak features or combinations of features and re-evalute to see if the model fairs better during cross-validation.  
 
 Negative feature importance value means that feature makes the loss go up.This might mean that your model is underfit (not enough iteration and it has not used the feature enough) or that the feature is not good and you can try removing it to improve final quality.  
@@ -280,10 +308,12 @@ Important features for the whole model
 <img src="assets/FIWC.png">
 
 ## Conclusion  
+
 In python implementation, we choose the model for the dataset, hence it helps in understanding the results of the model. Incase of MindsDB, we do not know what model is chosen to predict the data. We compared and found that Logistic Regression in python implementation has the closest accuracy with the MindsDB accuracy for the dataset used.
 We had to experiment with both methods-mindsdb and python implementation because using MindsDB will not help us understand the working of the ML Model that it uses to predict the datasets. To understand the working behind mindsdb functions, we had to compare it with a few machine learning models in python. 
 We can conclude that the algorithms used in MindsDB is similar in a way to the applied approach and that the accuracy is almost the same.
 
 
 ## Authors and Acknowledgment  
+
 [@Simrankumaran](https://github.com/Simrankumaran) <br> [@vgnsh333](https://github.com/vgnsh333) <br> [@Vcuber](https://github.com/Vcuber) <br> created this module with the guidance of [@rathishkumar](https://github.com/rathishkumar).  
