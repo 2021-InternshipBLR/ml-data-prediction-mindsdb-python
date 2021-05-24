@@ -166,7 +166,7 @@ Out of these models, Logistic Regression gives the highest accuracy.
 ## Evaluation Metrics
 Now to **evaluate** how accurate our model is, we can use different metrics but here we'll use accuracy score.   
 
-**What is Confusion Matrix?**      
+**Confusion Matrix**      
 A `Confusion matrix` is an N x N matrix used for evaluating the performance of a classification model, where N is the number of target classes. The matrix compares the actual target values with those predicted by the machine learning model. This gives us a holistic view of how well our classification model is performing and what kinds of errors it is making.  
 * True Positive (TP)  
 The predicted value matches the actual value  
@@ -183,7 +183,7 @@ The predicted value was falsely predicted
 The actual value was positive but the model predicted a negative value  
 Also known as the Type 2 error  
 
-**What is ![AccuracyScore](/assets/accuracy.png)?**  
+![AccuracyScore](/assets/accuracy.png)  
 <u>**Accuracy**</u> Score produces a result according to the sum of the number of times our model predicted no correctly(True Negative) and yes correctly(True Positive) by the total number of predictions.
 ```
 from sklearn.metrics import accuracy_score
@@ -191,7 +191,7 @@ score = accuracy_score(y_test, y_pred)
 ```
 The higher the accuracy score is, the better and more accurate our model is and so are our predictions. 
 
-**What is ![PrecisionScore](/assets/precision.png)?**    
+![PrecisionScore](/assets/precision.png)      
 <u>**Precision Score**</u> is the ratio of correctly predicted positive observations to the total predicted positive observations. High precision rates to the low false positive rate.  
 
 ```
@@ -200,7 +200,7 @@ precision_score(y_test, y_pred, average='None')
 ```
 The precision is intuitively the ability of the classifier not to label as positive a sample that is negative.
 
-**What is ![RecallScore](/assets/recall.png)?**    
+![RecallScore](/assets/recall.png)      
 <u>**Recall Score**</u> is the ratio of correctly predicted positive observarions to the all observations. It's a metric that quantifies the number of correct positive predictions made out of all positive predictions that could have been made. 
 
 ```
@@ -209,7 +209,7 @@ recall_score(y_test, y_pred)
 ```
 It is intuitively the ability of the classifier to find all the positive samples.
 
-**What is ![F1Score](/assets/f1.png)?**    
+![F1Score](/assets/f1.png)      
 <u>**F1 Score**</u> is the weighted average of precision and recall scores. Therefore, this score takes both false positives and false negatives into accout.
 
 ```
