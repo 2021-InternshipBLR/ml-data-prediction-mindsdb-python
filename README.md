@@ -39,9 +39,9 @@ Popular algorithms that can be used for multi-class classification include:
 MindsDB is an open-source AI layer for existing databases that allows you to effortlessly develop, train and deploy state-of-the-art machine learning models using SQL queries. With MindsDB any developer, analyst or data scientist can automatically build and deploy Machine Learning models from inside the databases in minutes using a graphical user interface or plain SQL.  
 
 ### How to [setup](https://docs.mindsdb.com/) MindsDB?  
-In this project we used mysqldb and mindsdb - python native
--For [MySQL DB](https://www.mysql.com/downloads/) installation
--For [Python Native](https://docs.mindsdb.com/JupyterNotebook/)    
+In this project we used mysqldb and mindsdb - python native  
+-For [MySQL DB](https://www.mysql.com/downloads/) installation  
+-For [Python Native](https://docs.mindsdb.com/JupyterNotebook/)      
   ```
   !pip install mindsdb_native
   ```
@@ -79,7 +79,7 @@ predictions = model.predict(when_data=test_data)
 ```  
 
 ## Python Implementation     
-We first have the Pre-Processing of the data, then we have the Machine Learning aspect of it where we train the model using the data and finally, we have the prediction where we give x data into the model to return a prediction after training the model with a pre-existing data set. 
+We first have the Pre-Processing of the data, then we have the Machine Learning aspect of it where we train the model using the data and finally, we have the prediction where we give x data into the model to return a prediction after training the model with a pre-existing data set.     
 **Pre-Processing**  
 
 We can think of DataFrames as a 2D structure or like a 2D array of kinds that has a row and a column. We use a DataFrame here to load the .csv data to be used by the program. We can use this with the help of the pandas library.
