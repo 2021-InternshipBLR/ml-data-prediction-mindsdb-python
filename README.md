@@ -38,16 +38,28 @@ Popular algorithms that can be used for multi-class classification include:
 ## What is [MindsDB](https://mindsdb.com/)?  
 MindsDB is an open-source AI layer for existing databases that allows you to effortlessly develop, train and deploy state-of-the-art machine learning models using SQL queries. With MindsDB any developer, analyst or data scientist can automatically build and deploy Machine Learning models from inside the databases in minutes using a graphical user interface or plain SQL.  
 
-### How to [setup](https://docs.mindsdb.com/) MindsDB?
-There are a few options to install MindsDB on different operating systems. To find the one that works the best for you, check out the links.  
--For [Windows](https://docs.mindsdb.com/installation/windows/)    
--For [Python Native](https://docs.mindsdb.com/JupyterNotebook/)  
-Python native is used in this module.  
+### How to [setup](https://docs.mindsdb.com/) MindsDB?  
+In this project we used mysqldb and mindsdb - python native
+-For [MySQL DB](https://www.mysql.com/downloads/) installation
+-For [Python Native](https://docs.mindsdb.com/JupyterNotebook/)    
+  ```
+  !pip install mindsdb_native
+  ```
+  Python native is used in this module.  
 
 ### How to [import](https://docs.mindsdb.com/datasources/mysql/) your data?
-You can use the MySQL dump in the repository to import the datasets to you MySQL workbench.
+The database dump is provided in the repo, import it using your mysqli command line or the workbench.  
+The data source can be a file, data frame or a MindsDB data source.
+In this module we use [MySQL_DS](https://docs.mindsdb.com/features/DataSources/#mysqlds) & [MySQL DB](https://docs.mindsdb.com/datasources/mysql/)  
+Note: Install mindsdb python native prior to using mysql ds
+```
+!pip install mindsdb_native
+
+from mindsdb_native import Predictor, MySqlDS
+```  
 
 ### How to [train](https://docs.mindsdb.com/model/mysql/) the model and predict data?
+Using MySQL:  
 To train a new model, you will need to INSERT a new record inside the mindsdb.predictors table.
 The INSERT query for training new model is quite simple, e.g.:
 ```
@@ -58,6 +70,13 @@ To check that the training finished successfully, you can SELECT from the mindsd
 ```
 SELECT * FROM mindsdb.predictors WHERE name='<model_name>';
 ```
+Using Python native:
+```
+#The dataset is split into train and test data frames.  
+model = Predictor(name=<modelName>)
+model.learn(from_data=train_data, to_predict=<targetColumn>)
+predictions = model.predict(when_data=test_data)
+```  
 
 ## Python Implementation     
 We first have the Pre-Processing of the data, then we have the Machine Learning aspect of it where we train the model using the data and finally, we have the prediction where we give x data into the model to return a prediction after training the model with a pre-existing data set. 
@@ -246,7 +265,7 @@ for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
 ## What is Feature Importance?
 The feature engineering process involves selecting the minimum required features to produce a valid model because the more features a model contains, the more complex it is (and the more sparse the data), therefore the more sensitive the model is to errors due to variance. A common approach to eliminating features is to describe their relative importance to a model, then eliminate weak features or combinations of features and re-evalute to see if the model fairs better during cross-validation.  
 
-Negative feature importance value means that feature makes the loss go up. ... This might mean that your model is underfit (not enough iteration and it has not used the feature enough) or that the feature is not good and you can try removing it to improve final quality.  
+Negative feature importance value means that feature makes the loss go up.This might mean that your model is underfit (not enough iteration and it has not used the feature enough) or that the feature is not good and you can try removing it to improve final quality.  
 Visualizing a model or multiple models by most informative feature is usually done via bar chart where the y-axis is the feature names and the x-axis is numeric value of the coefficient such that the x-axis has both a positive and negative quadrant. The bigger the size of the bar, the more informative that feature is.
 The larger coefficients are necessarily “more informative” because they contribute a greater weight to the final prediction in most cases.  
 
@@ -261,7 +280,10 @@ Important features for the whole model
 <img src="assets/FIWC.png">
 
 ## Conclusion  
-We had to experiment with both methods-mindsdb and python implementation because using Mindsdb will not help us understand the working of the ML Model that it uses to predict the datasets. To understand the working behind mindsdb functions, we had to compare it with a few machine learning models in python.    
+In python implementation, we choose the model for the dataset, hence it helps in understanding the results of the model. Incase of MindsDB, we do not know what model is chosen to predict the data. We compared and found that Logistic Regression in python implementation has the closest accuracy with the MindsDB accuracy for the dataset used.
+We had to experiment with both methods-mindsdb and python implementation because using MindsDB will not help us understand the working of the ML Model that it uses to predict the datasets. To understand the working behind mindsdb functions, we had to compare it with a few machine learning models in python. 
+We can conclude that the algorithms used in MindsDB is similar in a way to the applied approach and that the accuracy is almost the same.
+
 
 ## Authors and Acknowledgment  
 [@Simrankumaran](https://github.com/Simrankumaran) <br> [@vgnsh333](https://github.com/vgnsh333) <br> [@Vcuber](https://github.com/Vcuber) <br> created this module with the guidance of [@rathishkumar](https://github.com/rathishkumar).  
