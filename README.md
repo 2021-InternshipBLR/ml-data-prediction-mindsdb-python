@@ -1,5 +1,5 @@
 # Prediction/Forecasting: Experimenting with MindsDB & Python Classification Algorithms
-**OBJECTIVE-**  To solve Classification problem where we have to predict the `Diagnose(COVID,ALLERGEY,COLD,FLU)` and predict the chances of a `Heart attack` using `MindsDB and Python`
+**OBJECTIVE-**  To solve the classification problem where we teach the program and predict the outcome using `MindsDB` and `Python`.
 ## Table of Contents
   - [Classification](#what-is-classification)    
   - [MindsDB](#what-is-mindsdb)  
@@ -313,6 +313,11 @@ In python implementation, we choose the model for the dataset, hence it helps in
 We had to experiment with both methods-mindsdb and python implementation because using MindsDB will not help us understand the working of the ML Model that it uses to predict the datasets. To understand the working behind mindsdb functions, we had to compare it with a few machine learning models in python. 
 We can conclude that the algorithms used in MindsDB is similar in a way to the applied approach and that the accuracy is almost the same.
 
+## Sources
+
+[]()
+[Disease Dataset]()
+[Weather Dataset](https://github.com/Mazen-ALG/The-Data-Series/blob/master/Episode%207.2/weatherAlbury.csv)
 
 ## Authors and Acknowledgment  
 
