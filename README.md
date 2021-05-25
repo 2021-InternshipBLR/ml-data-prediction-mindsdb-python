@@ -1,5 +1,6 @@
 # Prediction/Forecasting: Experimenting with MindsDB & Python Classification Algorithms
 **OBJECTIVE-**  To solve the classification problem where we teach the program and predict the outcome using `MindsDB` and `Python`.
+
 ## Table of Contents
   - [Classification](#what-is-classification)    
   - [MindsDB](#what-is-mindsdb)  
@@ -201,7 +202,7 @@ Also known as the Type 2 error
 
 ![AccuracyScore](/assets/accuracy.png)  
 
-<u>**Accuracy**</u> Score produces a result according to the sum of the number of times our model predicted no correctly(True Negative) and yes correctly(True Positive) by the total number of predictions.
+<u>**Accuracy Score**</u> produces a result according to the sum of the number of times our model predicted no correctly(True Negative) and yes correctly(True Positive) by the total number of predictions.
 
 ```
 from sklearn.metrics import accuracy_score
@@ -315,9 +316,9 @@ We can conclude that the algorithms used in MindsDB is similar in a way to the a
 
 ## Sources
 
-[Heart Dataset]()
+[Heart Dataset](https://www.kaggle.com/nareshbhat/health-care-data-set-on-heart-attack-possibility)
 <br>
-[Covid Dataset]()
+[Covid Dataset](https://www.kaggle.com/walterconway/covid-flu-cold-symptoms)
 <br>
 [Weather Dataset](https://github.com/Mazen-ALG/The-Data-Series/blob/master/Episode%207.2/weatherAlbury.csv)
 
