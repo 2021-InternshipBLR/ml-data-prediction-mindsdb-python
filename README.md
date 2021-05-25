@@ -315,8 +315,10 @@ We can conclude that the algorithms used in MindsDB is similar in a way to the a
 
 ## Sources
 
-[]()
-[Disease Dataset]()
+[Heart Dataset]()
+<br>
+[Covid Dataset]()
+<br>
 [Weather Dataset](https://github.com/Mazen-ALG/The-Data-Series/blob/master/Episode%207.2/weatherAlbury.csv)
 
 ## Authors and Acknowledgment  
